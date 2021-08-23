@@ -1,7 +1,7 @@
 import React from 'react';
 import useFirestore from '../hooks/useFirestore';
 import Image from './Image';
-import deleteFile from '../deleteFile'
+import { deleteFile } from '../firebase/firebaseFunctions.js'
 
 const ImageGrid = () => {
 
