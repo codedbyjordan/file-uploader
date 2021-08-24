@@ -9,7 +9,9 @@ Then, on Firebase, make sure you have 'Firestore Database', 'Storage', and 'Auth
 - ~~Add login/signup functionality so each individual can upload their own images~~
 
 
+### Demo
 
+A demo can be found [here](https://jordanbaron.dev/image-uploader)
 
 
 
