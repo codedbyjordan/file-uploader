@@ -5,8 +5,8 @@ Then, on Firebase, make sure you have 'Firestore Database' and 'Storage' enabled
 
 ### TODO:
 
-Add modal
-~~Add login/signup functionality so each individual can upload their own images~~
+- Add modal
+- ~~Add login/signup functionality so each individual can upload their own images~~
 
 
 
