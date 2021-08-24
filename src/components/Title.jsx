@@ -5,7 +5,6 @@ const Title = () => {
   
   const [user, signIn, signOut] = useUser()
 
-  
   return (
     <div className="title">
       <h1>FireGram</h1>
