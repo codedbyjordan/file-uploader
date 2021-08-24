@@ -1,14 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { UserContext } from '../contexts/User';
 import useStorage from '../hooks/useStorage';
 
 const ProgressBar = ({file, resetFile}) => {
 
-  const {progress, error, fileUrl } = useStorage(file)
+  const { user, userDispatch } = useContext(UserContext)
+
+  const {progress, error, fileUrl} = useStorage(file, user.id)
 
   useEffect(() => {
     if(fileUrl)
       resetFile()
   }, [fileUrl, resetFile])
+
+  console.log(progress)
 
   return (
     <div className='progress-bar'>

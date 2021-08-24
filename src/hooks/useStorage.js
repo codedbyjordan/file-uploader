@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import { projectStorage, projectFirestore, createTimestamp } from '../firebase/firebaseFunctions';
 
 const initialState = {
@@ -12,6 +12,7 @@ const storageReducer = (state, action) => {
     case 'update_progress':
       return {
         ...state,
+        error: null,
         progress: action.payload
       }
     case 'error':
@@ -36,15 +37,14 @@ const fileNameWithId = (str) => {
   return str.join().replace(',', '')
 }
 
-const useStorage = (file) => {
+const useStorage = (file, collectionName) => {
   const [storage, storageDispatch] = useReducer(storageReducer, initialState)
-  const collectionRef = projectFirestore.collection('images')
-
-  console.log(file)
+  const [collection, setCollection] = useState(collectionName)
 
   useEffect(() => {
     // add unique id onto image name
     const fileName = fileNameWithId(file.name)
+    const collectionRef = projectFirestore.collection(collection)
 
     const storageRef = projectStorage.ref(fileName)
 
@@ -59,7 +59,7 @@ const useStorage = (file) => {
       storageDispatch({type: 'set_url', payload: url})
     })
 
-  }, [file])
+  }, [file, collection])
 
   
 
