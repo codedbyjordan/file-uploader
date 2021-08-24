@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { projectFirestore } from '../firebase/firebaseFunctions';
 
-const useFirestore = (collection) => {
+const useFirestore = (collectionName) => {
   
   const [docs, setDocs] = useState([])
+  const [collection, setCollection] = useState(collectionName)
 
   useEffect(() => {
     const unsubFromCollection = projectFirestore.collection(collection)
@@ -21,7 +22,7 @@ const useFirestore = (collection) => {
 
   
 
-  return { docs }
+  return { docs, setCollection }
 
 }
 
