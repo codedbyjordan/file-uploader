@@ -8,7 +8,7 @@ const Title = () => {
   
   return (
     <div className="title">
-      <h1>FireGram</h1>
+      <h1>Jordan's Image Uploader</h1>
       {!user.loggedIn && <button onClick={signIn}>Sign In</button>}
       {user.loggedIn && 
         <>
