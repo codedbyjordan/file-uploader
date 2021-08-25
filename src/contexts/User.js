@@ -1,8 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
+import { firebaseAuth } from '../firebase/firebaseFunctions';
 
-const initialUserState = {
-  loggedIn: false
-}
+let initialUserState = {}
 
 const userReducer = (state, action) => {
   switch(action.type) {
@@ -27,6 +26,23 @@ const UserContext = React.createContext();
 const UserProvider = (props) => {
 
   const [user, userDispatch] = useReducer(userReducer, initialUserState)
+
+  useEffect(() => {
+    firebaseAuth.onAuthStateChanged(user => {
+      if (user) {
+        userDispatch({
+          type: 'sign_in',
+          payload: {
+            displayName: user.displayName,
+            email: user.email,
+            id: user.uid
+          }
+        })
+      }
+    })
+  }, [firebaseAuth.onAuthStateChanged])
+
+  console.log(user)
 
   return (
     <UserContext.Provider value={{user, userDispatch}}>
