@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaFile } from 'react-icons/fa'
+import { FaFile, FaFileVideo } from 'react-icons/fa'
 
 const File = ({type, url, deleteFile}) => {
   
@@ -14,8 +14,11 @@ const File = ({type, url, deleteFile}) => {
       onMouseOut={() => setDeleteIsShown(false)}
       onClick = {() => window.location = url}
     >
-
-      {type.includes('image') ? <img src={url}/> : <div className="file"><FaFile className="fileIcon"/></div>}
+      <div className="file">
+        {type.includes('image') && <img src={url}/> } 
+        {type.includes('text') && <FaFile className="fileIcon"/>}
+        {type.includes('video') && <FaFileVideo className="fileIcon"/>}
+      </div>
     </div>
 
     {deleteIsShown && 
