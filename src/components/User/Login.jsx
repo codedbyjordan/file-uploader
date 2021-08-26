@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <div className="form">
       <Title>Login</Title>
-      {user.loggedIn ? <Redirect to="/"/> : <button onClick={signIn}><FaGoogle/></button> }  
+      {user.loggedIn ? <Redirect to="/file-uploader"/> : <button onClick={signIn}><FaGoogle/></button> }  
     </div>
   );
 }
