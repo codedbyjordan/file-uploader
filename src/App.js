@@ -20,10 +20,10 @@ function App() {
           <Route exact path="/file-uploader">
             <Home/>
           </Route>
-          <Route path="/login">
+          <Route path="/file-uploader/login">
             <Login/>
           </Route>
-          <Route path="/signup">
+          <Route path="/file-uploader/signup">
             <Signup/>
           </Route>
         </Switch>
