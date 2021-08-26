@@ -12,8 +12,8 @@ const Nav = () => {
       <div className="nav-items">
       {!user.loggedIn && 
         <>
-          <NavLink className="nav-link" to="/login">Login</NavLink>
-          <NavLink className="nav-link" to="/signup">Signup</NavLink>
+          <NavLink className="nav-link" to="/file-uploader/login">Login</NavLink>
+          <NavLink className="nav-link" to="/file-uploader/signup">Signup</NavLink>
         </>
       }
 
