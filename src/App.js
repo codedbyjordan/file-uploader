@@ -17,7 +17,7 @@ function App() {
       <div className="App">
         <Nav/>
         <Switch>
-          <Route exact path="/image-uploader">
+          <Route exact path="/file-uploader">
             <Home/>
           </Route>
           <Route path="/login">
