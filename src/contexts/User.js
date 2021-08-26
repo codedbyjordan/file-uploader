@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import { firebaseAuth } from '../firebase/firebaseFunctions';
 
-let initialUserState = {}
+let initialUserState = {loading: true}
 
 const userReducer = (state, action) => {
   switch(action.type) {
@@ -12,7 +12,9 @@ const userReducer = (state, action) => {
         email: action.payload.email,
         id: action.payload.id
       }
-    case 'sign_out':
+    case 
+      'sign_out',
+      'reset':
       return {
         loggedIn: false,
       }
@@ -27,6 +29,7 @@ const UserProvider = (props) => {
 
   const [user, userDispatch] = useReducer(userReducer, initialUserState)
 
+  // initial auth check
   useEffect(() => {
     firebaseAuth.onAuthStateChanged(user => {
       if (user) {
@@ -38,15 +41,15 @@ const UserProvider = (props) => {
             id: user.uid
           }
         })
+      } else {
+        userDispatch({type: 'reset'})
       }
     })
-  }, [firebaseAuth.onAuthStateChanged])
-
-  console.log(user)
+  }, [])
 
   return (
     <UserContext.Provider value={{user, userDispatch}}>
-      {props.children}
+      {user.loading ? <div className="loading"></div> : props.children}
     </UserContext.Provider>
   );
 }

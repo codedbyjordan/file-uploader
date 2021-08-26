@@ -1,24 +1,10 @@
-import React, { useContext } from 'react';
-import useUser from '../hooks/useUser';
+import React from 'react'
 
-const Title = () => {
-  
-  const [user, signIn, signOut] = useUser()
+const Title = (props) => {
 
   return (
     <div className="title">
-      <h1>Jordan's Image Uploader</h1>
-      {!user.loggedIn && <button onClick={signIn}>Sign In</button>}
-      {user.loggedIn && 
-        <>
-          <p>Hello, {user.displayName}</p>
-          <button onClick={signOut}>Sign Out</button>
-          <h2>Your Pictures</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </>
-      }
-
-      
+      <h2>{props.children}</h2>
     </div>
   )
 }

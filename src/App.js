@@ -1,24 +1,34 @@
 import React from 'react';
-import Title from './components/Title'
-import ImageGrid from './components/ImageGrid';
-import UploadForm from './components/UploadForm';
-import useUser from './hooks/useUser';
+import Nav from './components/Nav';
+import Login from './components/User/Login';
+import Signup from './components/User/Signup';
+import Home from './components/Home';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 
 function App() {
-
-  const [user, signIn, signOut] = useUser()
-
   return (
-    
-    <div className="App">
-      <Title/>
-      {user.loggedIn &&
-        <>
-          <UploadForm/>
-          <ImageGrid/>
-        </>
-      }
-    </div>
+    <Router>
+      <div className="App">
+        <Nav/>
+        <Switch>
+          <Route exact path="/image-uploader">
+            <Home/>
+          </Route>
+          <Route path="/login">
+            <Login/>
+          </Route>
+          <Route path="/signup">
+            <Signup/>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
