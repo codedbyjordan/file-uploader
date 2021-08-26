@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaFile } from 'react-icons/fa'
 
-const File = ({type, url, deleteImage}) => {
+const File = ({type, url, deleteFile}) => {
   
   const [deleteIsShown, setDeleteIsShown] = useState(false);
 
@@ -26,16 +26,17 @@ const File = ({type, url, deleteImage}) => {
     >
 
       {type.includes('image') ? <img src={url}/> : <div className="file"><FaFile className="fileIcon"/></div>}
-      
     </div>
-      {deleteIsShown && 
-        <button 
-          className="delete-btn"
-          onClick={deleteImage}
-        >
-          X
-        </button>
-      }
+
+    {deleteIsShown && 
+      <button 
+        className="delete-btn"
+        onClick={deleteFile}
+      >
+        X
+      </button>
+    }
+
     </>
   );
 }

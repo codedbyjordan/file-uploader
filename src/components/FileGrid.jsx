@@ -14,7 +14,7 @@ const FileGrid = () => {
     <div className="grid">
       { docs && docs.map(doc => (
         <div className="wrap" key={doc.id}>
-          <File type={doc.type} url={doc.url} deleteFile={ () => deleteFile(user.id, doc.id, doc.fileName) } key={doc.id}/>
+          <File type={doc.type} url={doc.url} deleteFile={ () => deleteFile(user.id, doc.id, doc.name) } key={doc.id}/>
         </div>
       ))}      
     </div>

@@ -30,7 +30,7 @@ const useStorage = (file, collection) => {
       // on complete
       const url = await storageRef.getDownloadURL()
       setFileUrl(url)
-      collectionRef.add({name: file.name, url: url, type: file.type, createdAt: createTimestamp()})
+      collectionRef.add({name: fileName, url: url, type: file.type, createdAt: createTimestamp()})
     })
 
   }, [file, collection])
